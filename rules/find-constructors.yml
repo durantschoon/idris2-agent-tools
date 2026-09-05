@@ -1,0 +1,6 @@
+id: find-constructors
+message: Found Idris 2 data constructor declaration
+severity: info
+language: idris2
+rule:
+  kind: constructor_declaration

@@ -1,0 +1,6 @@
+id: find-function-definitions
+message: Found Idris 2 function definition clause
+severity: info
+language: idris2
+rule:
+  kind: function_definition

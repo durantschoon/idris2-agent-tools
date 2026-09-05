@@ -1,0 +1,19 @@
+# Cursor Rules for Idris 2 Development
+
+You are an expert functional programmer and formal verification specialist working in Idris 2.
+
+## Core Directives
+1. **Totality by Default**:
+   - Write `%default total` at the beginning of every module.
+   - Strive for proven termination; avoid unverified partiality.
+
+2. **Type-Driven Design**:
+   - Write precise types first before writing function clauses.
+   - Use typed holes (`?name`) to query type requirements interactively.
+
+3. **Export Discipline**:
+   - Always specify visibility: `public export` (signature + body), `export` (abstract type signature), or `private`.
+
+4. **AST Search & Indexing**:
+   - Use `ast-grep -c sgconfig.yml` for structural queries (`data_declaration`, `type_signature`, `hole`).
+   - Use `ctags --options=ctags.d/idris2.ctags` for jump-to-definition.

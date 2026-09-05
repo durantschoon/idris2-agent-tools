@@ -1,0 +1,8 @@
+id: find-function-definitions
+valid:
+  - "data Nat : Type where Z : Nat"
+invalid:
+  - "f x = x + 1"
+  - |
+    add Z y = y
+    add (S k) y = S (add k y)

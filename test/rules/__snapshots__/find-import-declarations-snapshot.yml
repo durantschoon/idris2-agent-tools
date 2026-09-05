@@ -1,0 +1,14 @@
+id: find-import-declarations
+snapshots:
+  import Data.Vect:
+    labels:
+    - source: import Data.Vect
+      style: primary
+      start: 0
+      end: 16
+  import Gafro.Core:
+    labels:
+    - source: import Gafro.Core
+      style: primary
+      start: 0
+      end: 17

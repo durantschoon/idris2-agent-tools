@@ -1,0 +1,6 @@
+id: find-holes
+valid:
+  - "f x = x + 1"
+invalid:
+  - "f x = ?rhs_hole"
+  - "lemma : a = b; lemma = ?proof_hole"

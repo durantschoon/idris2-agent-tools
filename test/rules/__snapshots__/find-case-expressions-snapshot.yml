@@ -1,0 +1,14 @@
+id: find-case-expressions
+snapshots:
+  ? |
+    describe x = case x of
+      Z => "zero"
+      (S _) => "positive"
+  : labels:
+    - source: |2-
+         case x of
+          Z => "zero"
+          (S _) => "positive"
+      style: primary
+      start: 12
+      end: 58

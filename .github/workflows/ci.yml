@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, macos-latest ]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install ast-grep and universal-ctags (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y universal-ctags
+          npm install -g @ast-grep/cli
+
+      - name: Install ast-grep and universal-ctags (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install universal-ctags ast-grep
+
+      - name: Build Tree-sitter dylib
+        run: make dylib
+
+      - name: Run Rule and Ctags Tests
+        run: make test

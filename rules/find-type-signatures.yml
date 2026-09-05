@@ -1,0 +1,6 @@
+id: find-type-signatures
+message: Found Idris 2 type signature
+severity: info
+language: idris2
+rule:
+  kind: type_signature

@@ -1,0 +1,14 @@
+id: find-holes
+snapshots:
+  f x = ?rhs_hole:
+    labels:
+    - source: ' ?rhs_hole'
+      style: primary
+      start: 5
+      end: 15
+  'lemma : a = b; lemma = ?proof_hole':
+    labels:
+    - source: ' ?proof_hole'
+      style: primary
+      start: 22
+      end: 34

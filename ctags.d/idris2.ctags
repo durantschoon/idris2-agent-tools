@@ -1,0 +1,29 @@
+# Universal Ctags Language Definition for Idris 2
+# Provides full symbol indexing for Idris 2 codebases (.idr, .lidr)
+
+--langdef=Idris2
+--map-Idris2=.idr
+--map-Idris2=+.lidr
+
+--kinddef-Idris2=m,module,modules
+--kinddef-Idris2=d,data,data types
+--kinddef-Idris2=c,constructor,constructors
+--kinddef-Idris2=i,interface,interfaces
+--kinddef-Idris2=r,record,records
+--kinddef-Idris2=t,type,type signatures
+--kinddef-Idris2=f,function,function definitions
+
+# Match: module Module.Name
+--regex-Idris2=/^[ \t]*module[ \t]+([a-zA-Z0-9_.]+)/\1/m,module/
+
+# Match: data TypeName ... where
+--regex-Idris2=/^[ \t]*data[ \t]+([a-zA-Z0-9_]+)/\1/d,data/
+
+# Match: interface InterfaceName ... where
+--regex-Idris2=/^[ \t]*interface[ \t]+([a-zA-Z0-9_]+)/\1/i,interface/
+
+# Match: record RecordName ... where
+--regex-Idris2=/^[ \t]*record[ \t]+([a-zA-Z0-9_]+)/\1/r,record/
+
+# Match: top-level or block type signatures: name : ...
+--regex-Idris2=/^[ \t]*([a-zA-Z0-9_!]+)[ \t]*:[ \t]+/\1/t,type/

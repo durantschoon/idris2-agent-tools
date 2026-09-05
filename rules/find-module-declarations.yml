@@ -1,0 +1,6 @@
+id: find-module-declarations
+message: Found Idris 2 module declaration
+severity: info
+language: idris2
+rule:
+  kind: module_declaration

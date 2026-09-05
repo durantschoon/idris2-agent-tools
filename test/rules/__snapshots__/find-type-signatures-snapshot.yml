@@ -1,0 +1,14 @@
+id: find-type-signatures
+snapshots:
+  'add : Nat -> Nat -> Nat':
+    labels:
+    - source: 'add : Nat -> Nat -> Nat'
+      style: primary
+      start: 0
+      end: 23
+  'identity : (a : Type) -> a -> a':
+    labels:
+    - source: 'identity : (a : Type) -> a -> a'
+      style: primary
+      start: 0
+      end: 31

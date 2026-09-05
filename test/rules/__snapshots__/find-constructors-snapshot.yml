@@ -1,0 +1,11 @@
+id: find-constructors
+snapshots:
+  ? |
+    data Bool : Type where
+      True : Bool
+      False : Bool
+  : labels:
+    - source: '  True : Bool'
+      style: primary
+      start: 23
+      end: 36

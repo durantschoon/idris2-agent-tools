@@ -1,0 +1,3 @@
+[submodule "vendor/tree-sitter-idris2"]
+	path = vendor/tree-sitter-idris2
+	url = https://github.com/durantschoon/tree-sitter-idris2.git

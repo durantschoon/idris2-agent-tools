@@ -1,0 +1,8 @@
+id: find-with-declarations
+valid:
+  - "f x = x + 1"
+invalid:
+  - |
+    filter p (x :: xs) with (p x)
+      filter p (x :: xs) | True = x :: filter p xs
+      filter p (x :: xs) | False = filter p xs

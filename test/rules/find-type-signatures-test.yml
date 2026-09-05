@@ -1,0 +1,6 @@
+id: find-type-signatures
+valid:
+  - "x = 10"
+invalid:
+  - "add : Nat -> Nat -> Nat"
+  - "identity : (a : Type) -> a -> a"

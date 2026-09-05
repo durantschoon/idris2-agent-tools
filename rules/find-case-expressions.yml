@@ -1,0 +1,6 @@
+id: find-case-expressions
+message: Found Idris 2 case expression
+severity: info
+language: idris2
+rule:
+  kind: case_expression

@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+SG_CONFIG="${ROOT_DIR}/sgconfig.yml"
+CTAGS_OPT="${ROOT_DIR}/ctags.d/idris2.ctags"
+
+usage() {
+    cat << EOF
+idris2-agent-tools: High-performance Developer & LLM Agent Tooling for Idris 2
+
+Usage:
+  idris2-agent-tools <command> [arguments...]
+
+Commands:
+  scan [PATH]              Run ast-grep scan using Idris 2 rules (default: .)
+  run [ARGS...]            Run ast-grep with Idris 2 custom language config
+  tags [PATH] [OUT]        Generate Universal Ctags using Idris 2 optlib (default: . tags)
+  install-directives DIR   Install AGENTS.md, CLAUDE.md, and rules into target directory
+  install-ctags            Install idris2.ctags into ~/.ctags.d/
+  test                     Run all ast-grep and ctags tests
+  help                     Show this help message
+
+Examples:
+  idris2-agent-tools scan src/
+  idris2-agent-tools run -k data_declaration src/
+  idris2-agent-tools run -k hole src/
+  idris2-agent-tools tags src/ tags
+  idris2-agent-tools install-directives /path/to/my-idris2-repo
+EOF
+    exit 0
+}
+
+if [[ $# -eq 0 ]]; then
+    usage
+fi
+
+COMMAND="$1"
+shift
+
+case "${COMMAND}" in
+    scan)
+        TARGET="${1:-.}"
+        ast-grep scan -c "${SG_CONFIG}" "${TARGET}"
+        ;;
+    run)
+        ast-grep run -c "${SG_CONFIG}" "$@"
+        ;;
+    tags)
+        TARGET="${1:-.}"
+        OUT="${2:-tags}"
+        ctags --options="${CTAGS_OPT}" -f "${OUT}" -R "${TARGET}"
+        echo "Generated Idris 2 ctags at ${OUT} for ${TARGET}"
+        ;;
+    install-directives)
+        if [[ $# -eq 0 ]]; then
+            echo "Error: Target directory required."
+            echo "Usage: idris2-agent-tools install-directives <target-dir>"
+            exit 1
+        fi
+        TARGET_DIR="$1"
+        mkdir -p "${TARGET_DIR}/.agents/rules" "${TARGET_DIR}/.agents/workflows" "${TARGET_DIR}/ctags.d"
+        cp "${ROOT_DIR}/directives/claude/CLAUDE.md" "${TARGET_DIR}/CLAUDE.md"
+        cp "${ROOT_DIR}/directives/codex/AGENTS.md" "${TARGET_DIR}/AGENTS.md"
+        cp "${ROOT_DIR}/directives/cursor/.cursorrules" "${TARGET_DIR}/.cursorrules"
+        cp "${ROOT_DIR}/directives/antigravity/.agents/rules/idris2.md" "${TARGET_DIR}/.agents/rules/idris2.md"
+        cp "${ROOT_DIR}/directives/antigravity/.agents/workflows/totality.md" "${TARGET_DIR}/.agents/workflows/totality.md"
+        cp "${ROOT_DIR}/directives/antigravity/.agents/workflows/interactive-editing.md" "${TARGET_DIR}/.agents/workflows/interactive-editing.md"
+        cp "${CTAGS_OPT}" "${TARGET_DIR}/ctags.d/idris2.ctags"
+        echo "Installed Idris 2 agent directives and ctags into ${TARGET_DIR}"
+        ;;
+    install-ctags)
+        mkdir -p "${HOME}/.ctags.d"
+        cp "${CTAGS_OPT}" "${HOME}/.ctags.d/idris2.ctags"
+        echo "Installed idris2.ctags to ${HOME}/.ctags.d/idris2.ctags"
+        ;;
+    test)
+        echo "==> Running ast-grep rule tests for Idris 2..."
+        ast-grep test -c "${SG_CONFIG}"
+        echo "==> Running Universal Ctags tests for Idris 2..."
+        "${ROOT_DIR}/test/test_ctags.sh"
+        echo "All tests passed successfully!"
+        ;;
+    help|--help|-h)
+        usage
+        ;;
+    *)
+        echo "Unknown command: ${COMMAND}"
+        usage
+        ;;
+esac

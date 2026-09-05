@@ -1,0 +1,9 @@
+id: find-constructors
+valid:
+  - "x = 10"
+  - "f : Int -> Int"
+invalid:
+  - |
+    data Bool : Type where
+      True : Bool
+      False : Bool

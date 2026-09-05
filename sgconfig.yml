@@ -1,0 +1,9 @@
+ruleDirs:
+  - rules
+testConfigs:
+  - testDir: test/rules
+customLanguages:
+  idris2:
+    libraryPath: vendor/tree-sitter-idris2/tree-sitter-idris2.dylib
+    extensions: [idr, lidr]
+    expandoChar: $

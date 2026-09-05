@@ -1,0 +1,16 @@
+id: find-function-definitions
+snapshots:
+  ? |
+    add Z y = y
+    add (S k) y = S (add k y)
+  : labels:
+    - source: add Z y = y
+      style: primary
+      start: 0
+      end: 11
+  f x = x + 1:
+    labels:
+    - source: f x = x + 1
+      style: primary
+      start: 0
+      end: 11

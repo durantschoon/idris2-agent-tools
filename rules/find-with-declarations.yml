@@ -1,0 +1,6 @@
+id: find-with-declarations
+message: Found Idris 2 with-declaration clause
+severity: info
+language: idris2
+rule:
+  kind: with_declaration

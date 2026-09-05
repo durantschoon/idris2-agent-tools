@@ -1,0 +1,6 @@
+id: find-holes
+message: Found Idris 2 proof/implementation hole (?name)
+severity: info
+language: idris2
+rule:
+  kind: hole

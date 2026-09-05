@@ -1,0 +1,12 @@
+id: find-data-declarations
+valid:
+  - "x = 10"
+  - "f : Int -> Int"
+invalid:
+  - |
+    data Nat : Type where
+      Z : Nat
+      S : Nat -> Nat
+  - |
+    data Vect : (len : Nat) -> (elem : Type) -> Type where
+      Nil : Vect Z elem

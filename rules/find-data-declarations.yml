@@ -1,0 +1,6 @@
+id: find-data-declarations
+message: Found Idris 2 data declaration
+severity: info
+language: idris2
+rule:
+  kind: data_declaration

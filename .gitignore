@@ -1,0 +1,4 @@
+tags
+*.dylib
+*.so
+.DS_Store

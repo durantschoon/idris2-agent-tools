@@ -1,0 +1,23 @@
+id: find-data-declarations
+snapshots:
+  ? |
+    data Nat : Type where
+      Z : Nat
+      S : Nat -> Nat
+  : labels:
+    - source: |-
+        data Nat : Type where
+          Z : Nat
+      style: primary
+      start: 0
+      end: 31
+  ? |
+    data Vect : (len : Nat) -> (elem : Type) -> Type where
+      Nil : Vect Z elem
+  : labels:
+    - source: |-
+        data Vect : (len : Nat) -> (elem : Type) -> Type where
+          Nil : Vect
+      style: primary
+      start: 0
+      end: 67

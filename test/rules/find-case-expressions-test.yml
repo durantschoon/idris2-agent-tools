@@ -1,0 +1,8 @@
+id: find-case-expressions
+valid:
+  - "f x = x + 1"
+invalid:
+  - |
+    describe x = case x of
+      Z => "zero"
+      (S _) => "positive"

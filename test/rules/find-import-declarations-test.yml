@@ -1,0 +1,6 @@
+id: find-import-declarations
+valid:
+  - "module Main"
+invalid:
+  - "import Data.Vect"
+  - "import Gafro.Core"

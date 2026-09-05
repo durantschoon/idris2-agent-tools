@@ -1,0 +1,14 @@
+id: find-with-declarations
+snapshots:
+  ? |
+    filter p (x :: xs) with (p x)
+      filter p (x :: xs) | True = x :: filter p xs
+      filter p (x :: xs) | False = filter p xs
+  : labels:
+    - source: |
+        filter p (x :: xs) with (p x)
+          filter p (x :: xs) | True = x :: filter p xs
+          filter p (x :: xs) | False = filter p xs
+      style: primary
+      start: 0
+      end: 120

@@ -1,0 +1,14 @@
+id: find-module-declarations
+snapshots:
+  module Gafro.Core:
+    labels:
+    - source: module Gafro.Core
+      style: primary
+      start: 0
+      end: 17
+  module Main:
+    labels:
+    - source: module Main
+      style: primary
+      start: 0
+      end: 11

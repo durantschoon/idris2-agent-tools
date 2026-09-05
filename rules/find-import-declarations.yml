@@ -1,0 +1,6 @@
+id: find-import-declarations
+message: Found Idris 2 import declaration
+severity: info
+language: idris2
+rule:
+  kind: import_declaration
